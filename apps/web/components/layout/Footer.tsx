@@ -97,20 +97,31 @@ export function Footer() {
               independent, intelligent systems for the scalable future.
             </p>
 
-            {/* Contact Info - Dynamic */}
+            {/* Contact Info - Explicit */}
             <div className="space-y-4 pt-2">
-              {contactInfo.slice(0, 3).map((info) => {
-                const IconComponent = iconMap[info.type] || MapPin;
-                return (
-                  <div
-                    key={info.id}
-                    className="flex items-center gap-3 text-sm group cursor-pointer transition-colors hover:text-white"
-                  >
-                    <IconComponent className="w-4 h-4 text-violet-500 group-hover:text-violet-400 transition-colors" />
-                    <span>{info.value}</span>
-                  </div>
-                );
-              })}
+              {contactInfo
+                .filter((info) =>
+                  ["address", "phone", "email"].includes(info.type),
+                )
+                .sort((a, b) => {
+                  const order = { address: 1, phone: 2, email: 3 };
+                  return (
+                    (order[a.type as keyof typeof order] || 99) -
+                    (order[b.type as keyof typeof order] || 99)
+                  );
+                })
+                .map((info) => {
+                  const IconComponent = iconMap[info.type] || MapPin;
+                  return (
+                    <div
+                      key={info.id}
+                      className="flex items-center gap-3 text-sm group cursor-pointer transition-colors hover:text-white"
+                    >
+                      <IconComponent className="w-4 h-4 text-violet-500 group-hover:text-violet-400 transition-colors" />
+                      <span>{info.value}</span>
+                    </div>
+                  );
+                })}
             </div>
 
             {/* Social Links */}
