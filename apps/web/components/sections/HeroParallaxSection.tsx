@@ -122,7 +122,7 @@ export function HeroParallaxSection() {
             <div className="relative pointer-events-auto">
               <h1 className="text-4xl font-bold text-gray-900 md:text-7xl lg:text-8xl tracking-tighter leading-[0.9]">
                 Building the{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-indigo-600">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-violet-600 to-indigo-600">
                   Future
                 </span>{" "}
                 <br /> of{" "}
