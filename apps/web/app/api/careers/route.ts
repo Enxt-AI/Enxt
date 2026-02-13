@@ -18,7 +18,7 @@ export async function GET() {
       orderBy: { order: "asc" },
     });
     // Parse requirements JSON string to array for each opening
-    const parsed = openings.map((o) => ({
+    const parsed = openings.map((o: any) => ({
       ...o,
       requirements: JSON.parse(o.requirements),
     }));
