@@ -8,17 +8,10 @@ import { CometCard } from "@/components/ui/comet-card";
 const stats = [
   {
     icon: Users,
-    value: "50+",
+    value: "15+",
     label: "Experts",
     bg: "bg-blue-50",
     color: "text-blue-600",
-  },
-  {
-    icon: Trophy,
-    value: "100+",
-    label: "Projects",
-    bg: "bg-amber-50",
-    color: "text-amber-600",
   },
   {
     icon: Star,
@@ -27,17 +20,10 @@ const stats = [
     bg: "bg-violet-50",
     color: "text-violet-600",
   },
-  {
-    icon: Globe2,
-    value: "15+",
-    label: "Countries",
-    bg: "bg-emerald-50",
-    color: "text-emerald-600",
-  },
 ];
 
 export function Team() {
-  const [teamImage, setTeamImage] = useState("/group.jpeg");
+  const [teamImage, setTeamImage] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchTeamImage = async () => {
@@ -73,11 +59,13 @@ export function Team() {
             <CometCard className="rounded-3xl cursor-pointer">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl p-1 bg-gradient-to-br from-violet-100 to-white">
                 <div className="relative rounded-2xl overflow-hidden">
-                  <img
-                    src={teamImage}
-                    alt="EnxtAI Team"
-                    className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
-                  />
+                  {teamImage && (
+                    <img
+                      src={teamImage}
+                      alt="EnxtAI Team"
+                      className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+                    />
+                  )}
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
 

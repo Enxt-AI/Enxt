@@ -75,10 +75,7 @@ export function Footer() {
 
   return (
     <footer className="bg-black text-zinc-400 border-t border-zinc-900 relative overflow-hidden font-sans">
-      <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
-        fill="white"
-      />
+      <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
       <div className="container mx-auto px-6 py-20 relative z-10">
         {/* Main Footer Content */}
@@ -189,7 +186,7 @@ export function Footer() {
           </div>
 
           {/* Newsletter - Span 2 Cols */}
-          <div className="lg:col-span-2">
+          {/* <div className="lg:col-span-2">
             <div className="bg-zinc-900/30 border border-zinc-800 p-6 rounded-2xl">
               <h3 className="text-white font-semibold text-lg mb-2">
                 Subscribe to our newsletter
@@ -209,7 +206,7 @@ export function Footer() {
                 </Button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Bar */}
