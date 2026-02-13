@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Loader2, Save, ExternalLink } from "lucide-react";
+import { Loader2, Save, ExternalLink, Upload } from "lucide-react";
+import { ImageUpload } from "@/components/ui/image-upload";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -92,50 +93,21 @@ export default function TeamPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <label
-                  htmlFor="imageUrl"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Image URL <span className="text-destructive">*</span>
+                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  Team Image <span className="text-destructive">*</span>
                 </label>
-                <div className="flex gap-2">
-                  <Input
-                    id="imageUrl"
-                    type="url"
-                    required
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    placeholder="https://example.com/team-photo.jpg"
-                  />
-                  {imageUrl && (
-                    <Button
-                      type="button"
-                      variant="outline"
-                      size="icon"
-                      onClick={() => window.open(imageUrl, "_blank")}
-                      title="Preview Image"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                    </Button>
-                  )}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Provide a direct link to the image you want to display.
-                </p>
+                <ImageUpload
+                  value={imageUrl}
+                  onChange={(url) => setImageUrl(url)}
+                  onRemove={() => setImageUrl("")}
+                  disabled={saving}
+                />
+                {imageUrl && (
+                  <p className="text-[10px] text-muted-foreground truncate max-w-full">
+                    {imageUrl}
+                  </p>
+                )}
               </div>
-
-              {imageUrl && (
-                <div className="rounded-md border overflow-hidden bg-muted/50 aspect-video relative flex items-center justify-center">
-                  <img
-                    src={imageUrl}
-                    alt="Team Preview"
-                    className="max-h-full max-w-full object-contain"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
-                  />
-                </div>
-              )}
 
               <Button type="submit" disabled={saving || !imageUrl}>
                 {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}

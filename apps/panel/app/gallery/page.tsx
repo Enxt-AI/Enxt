@@ -10,7 +10,9 @@ import {
   GripVertical,
   ExternalLink,
   X,
+  Upload,
 } from "lucide-react";
+import { ImageUpload } from "@/components/ui/image-upload";
 import {
   Table,
   TableBody,
@@ -370,37 +372,19 @@ export default function GalleryPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label
-                    htmlFor="imageUrl"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Image URL <span className="text-destructive">*</span>
+                  <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    Gallery Image <span className="text-destructive">*</span>
                   </label>
-                  <div className="flex gap-2">
-                    <Input
-                      id="imageUrl"
-                      type="url"
-                      required
-                      value={formImageUrl}
-                      onChange={(e) => setFormImageUrl(e.target.value)}
-                      placeholder="https://example.com/image.jpg"
-                    />
-                  </div>
+                  <ImageUpload
+                    value={formImageUrl}
+                    onChange={(url) => setFormImageUrl(url)}
+                    onRemove={() => setFormImageUrl("")}
+                    disabled={saving}
+                  />
                   {formImageUrl && (
-                    <div className="mt-2 text-xs text-muted-foreground">
-                      Preview:
-                      <div className="mt-1 h-32 rounded-md border bg-muted p-1">
-                        <img
-                          src={formImageUrl}
-                          alt="Preview"
-                          className="h-full w-full object-contain"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src =
-                              "https://placehold.co/400x300?text=Invalid+URL";
-                          }}
-                        />
-                      </div>
-                    </div>
+                    <p className="text-[10px] text-muted-foreground truncate max-w-full">
+                      {formImageUrl}
+                    </p>
                   )}
                 </div>
 

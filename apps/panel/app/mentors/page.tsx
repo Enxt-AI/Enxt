@@ -10,7 +10,9 @@ import {
   GripVertical,
   ExternalLink,
   X,
+  Upload,
 } from "lucide-react";
+import { ImageUpload } from "@/components/ui/image-upload";
 import {
   Table,
   TableBody,
@@ -367,20 +369,20 @@ export default function MentorsPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label
-                    htmlFor="imageUrl"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Image URL <span className="text-destructive">*</span>
+                  <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    Mentor Image <span className="text-destructive">*</span>
                   </label>
-                  <Input
-                    id="imageUrl"
-                    type="url"
-                    required
+                  <ImageUpload
                     value={formImageUrl}
-                    onChange={(e) => setFormImageUrl(e.target.value)}
-                    placeholder="https://example.com/photo.jpg"
+                    onChange={(url) => setFormImageUrl(url)}
+                    onRemove={() => setFormImageUrl("")}
+                    disabled={saving}
                   />
+                  {formImageUrl && (
+                    <p className="text-[10px] text-muted-foreground truncate max-w-full">
+                      {formImageUrl}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
