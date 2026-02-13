@@ -189,7 +189,7 @@ export function Footer() {
           </div>
 
           {/* Newsletter - Span 2 Cols */}
-          <div className="lg:col-span-2">
+          {/* <div className="lg:col-span-2">
             <div className="bg-zinc-900/30 border border-zinc-800 p-6 rounded-2xl">
               <h3 className="text-white font-semibold text-lg mb-2">
                 Subscribe to our newsletter
@@ -209,7 +209,7 @@ export function Footer() {
                 </Button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Bar */}
