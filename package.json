@@ -2,13 +2,14 @@
   "name": "enxt",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
+    "build": "npm run build --workspaces --if-present",
+    "dev": "concurrently \"npm run dev -w @enxt/web\" \"npm run dev -w @enxt/panel\" \"npm run dev -w docs\"",
+    "lint": "npm run lint --workspaces --if-present",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "check-types": "npm run check-types --workspaces --if-present"
   },
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "prettier": "^3.7.4",
     "turbo": "^2.8.7",
     "typescript": "5.9.2"
