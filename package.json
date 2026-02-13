@@ -6,7 +6,8 @@
     "dev": "concurrently \"npm run dev -w @enxt/web\" \"npm run dev -w @enxt/panel\" \"npm run dev -w docs\"",
     "lint": "npm run lint --workspaces --if-present",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "npm run check-types --workspaces --if-present"
+    "check-types": "npm run check-types --workspaces --if-present",
+    "postinstall": "npm run generate -w @enxt/database"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
