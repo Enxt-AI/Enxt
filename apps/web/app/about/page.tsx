@@ -126,30 +126,6 @@ const About = () => {
               ))}
             </div>
           </motion.div>
-
-          {/* Stats Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-12"
-          >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              {[
-                { number: "50+", label: "Projects Delivered" },
-                { number: "30+", label: "Team Members" },
-                { number: "20+", label: "Happy Clients" },
-                { number: "5+", label: "Years Experience" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-4xl font-bold text-primary mb-2">
-                    {stat.number}
-                  </p>
-                  <p className="text-muted-foreground text-sm">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </main>
     </div>

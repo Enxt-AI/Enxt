@@ -64,7 +64,7 @@ const BusinessAutomation = () => {
   ];
 
   return (
-    <div className="ai-filmmaking-page min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className=" min-h-screen bg-background text-foreground overflow-x-hidden">
       <main>
         <SolutionHero
           title={
@@ -75,8 +75,7 @@ const BusinessAutomation = () => {
           subtitle="Streamline operations and reduce costs with intelligent process automation."
           videoSrc="https://assets.mixkit.co/videos/preview/mixkit-factory-conveyor-belt-of-packages-41589-large.mp4"
         />
-       
-    
+
         <SolutionContact />
       </main>
     </div>

@@ -1,6 +1,4 @@
 import { SolutionHero } from "@/components/solutions/common/SolutionHero";
-import { SolutionServices } from "@/components/solutions/common/SolutionServices";
-import { SolutionProcess } from "@/components/solutions/common/SolutionProcess";
 import { SolutionContact } from "@/components/solutions/common/SolutionContact";
 import "../ai-filmmaking/AiFilmmaking.css";
 
@@ -61,7 +59,7 @@ const AiConsultation = () => {
   ];
 
   return (
-    <div className="ai-filmmaking-page min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className=" min-h-screen bg-background text-foreground overflow-x-hidden">
       <main>
         <SolutionHero
           title={

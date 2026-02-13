@@ -62,7 +62,7 @@ const BusinessIntelligence = () => {
   ];
 
   return (
-    <div className="ai-filmmaking-page min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className=" min-h-screen bg-background text-foreground overflow-x-hidden">
       <main>
         <SolutionHero
           title={
@@ -73,7 +73,7 @@ const BusinessIntelligence = () => {
           subtitle="Turn raw data into actionable strategic insights."
           videoSrc="https://assets.mixkit.co/videos/preview/mixkit-stock-market-digital-graph-39694-large.mp4"
         />
-       
+
         <SolutionContact />
       </main>
     </div>

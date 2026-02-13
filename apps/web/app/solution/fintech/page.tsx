@@ -61,7 +61,7 @@ const Fintech = () => {
   ];
 
   return (
-    <div className="ai-filmmaking-page min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className=" min-h-screen bg-background text-foreground overflow-x-hidden">
       <main>
         <SolutionHero
           title={

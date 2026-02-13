@@ -75,10 +75,7 @@ export function Footer() {
 
   return (
     <footer className="bg-black text-zinc-400 border-t border-zinc-900 relative overflow-hidden font-sans">
-      <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
-        fill="white"
-      />
+      <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="white" />
 
       <div className="container mx-auto px-6 py-20 relative z-10">
         {/* Main Footer Content */}

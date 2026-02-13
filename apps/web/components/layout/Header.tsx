@@ -55,7 +55,7 @@ const solutions = [
 const navItems = [
   { name: "Our Mentors", link: "/mentors" },
   { name: "Gallery", link: "/gallery" },
-  { name: "Careers", link: "/careers" },
+  { name: "About us", link: "/about" },
   { name: "Blogs", link: "/blogs" },
   { name: "Contact", link: "/contact" },
 ];
@@ -103,7 +103,7 @@ export function Header() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent text-sm font-medium text-muted-foreground hover:text-primary transition-colors hover:scale-105 transform duration-200 p-0 h-auto gap-1">
+                <NavigationMenuTrigger className="bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent text-sm font-medium text-muted-foreground hover:text-violet-600 transition-colors hover:scale-105 transform duration-200 p-0 h-auto gap-1">
                   Solutions
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -127,7 +127,7 @@ export function Header() {
             <a
               key={item.name}
               href={item.link}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors hover:scale-105 transform duration-200"
+              className="text-sm font-medium text-muted-foreground hover:text-violet-600 transition-colors hover:scale-105 transform duration-200"
             >
               {item.name}
             </a>
