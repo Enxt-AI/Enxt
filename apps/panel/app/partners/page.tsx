@@ -12,7 +12,9 @@ import {
   Search,
   Save,
   X,
+  Upload,
 } from "lucide-react";
+import { ImageUpload } from "@/components/ui/image-upload";
 import {
   Table,
   TableBody,
@@ -351,20 +353,20 @@ export default function PartnersPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label
-                    htmlFor="logoUrl"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Logo URL <span className="text-destructive">*</span>
+                  <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    Partner Logo <span className="text-destructive">*</span>
                   </label>
-                  <Input
-                    id="logoUrl"
-                    type="url"
-                    required
+                  <ImageUpload
                     value={formLogoUrl}
-                    onChange={(e) => setFormLogoUrl(e.target.value)}
-                    placeholder="https://example.com/logo.png"
+                    onChange={(url) => setFormLogoUrl(url)}
+                    onRemove={() => setFormLogoUrl("")}
+                    disabled={saving}
                   />
+                  {formLogoUrl && (
+                    <p className="text-[10px] text-muted-foreground truncate max-w-full">
+                      {formLogoUrl}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">

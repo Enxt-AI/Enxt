@@ -10,7 +10,9 @@ import {
   GripVertical,
   ExternalLink,
   X,
+  Upload,
 } from "lucide-react";
+import { ImageUpload } from "@/components/ui/image-upload";
 import {
   Table,
   TableBody,
@@ -28,7 +30,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 
 const API_BASE = "http://localhost:3000/api/hero-products";
 
@@ -355,22 +356,20 @@ export default function HeroImagesPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label
-                    htmlFor="thumbnail"
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    Thumbnail URL <span className="text-destructive">*</span>
+                  <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    Hero Image <span className="text-destructive">*</span>
                   </label>
-                  <div className="flex gap-2">
-                    <Input
-                      id="thumbnail"
-                      type="url"
-                      required
-                      value={formThumbnail}
-                      onChange={(e) => setFormThumbnail(e.target.value)}
-                      placeholder="https://example.com/image.png"
-                    />
-                  </div>
+                  <ImageUpload
+                    value={formThumbnail}
+                    onChange={(url) => setFormThumbnail(url)}
+                    onRemove={() => setFormThumbnail("")}
+                    disabled={saving}
+                  />
+                  {formThumbnail && (
+                    <p className="text-[10px] text-muted-foreground truncate max-w-full">
+                      {formThumbnail}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
