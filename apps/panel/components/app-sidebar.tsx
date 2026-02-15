@@ -4,6 +4,7 @@ import {
   Bot,
   Briefcase,
   Command,
+  Film,
   Frame,
   Handshake,
   Image,
@@ -37,6 +38,7 @@ import {
 // Menu items.
 const items = [
   { title: "Dashboard", url: "/", icon: PieChart },
+  { title: "AI Filmmaking", url: "/ai-filmmaking", icon: Film },
   { title: "Blogs", url: "/blogs", icon: BookOpen },
   { title: "Careers", url: "/careers", icon: Briefcase },
   { title: "Contact Info", url: "/contact-info", icon: Phone },

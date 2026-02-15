@@ -1,29 +1,65 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Volume2, VolumeX } from 'lucide-react'
-import { useState, useRef, useEffect } from 'react'
+import { motion } from "framer-motion";
+import { Volume2, VolumeX } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+
+interface HeroData {
+  videoUrl: string;
+  titleLine1: string;
+  titleLine2: string;
+  titleLine3: string;
+  buttonText: string;
+  buttonLink: string;
+}
 
 export function Hero() {
-  const [isMuted, setIsMuted] = useState(true)
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [heroData, setHeroData] = useState<HeroData | null>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true
-      // Attempt autoplay
-      const playPromise = videoRef.current.play()
+    (async () => {
+      try {
+        const res = await fetch("/api/ai-film/hero");
+        const data = await res.json();
+        if (data) setHeroData(data);
+      } catch (err) {
+        console.error("Failed to fetch hero data:", err);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (videoRef.current && heroData) {
+      videoRef.current.muted = true;
+      const playPromise = videoRef.current.play();
       if (playPromise !== undefined) {
-          playPromise.catch(error => console.error('Video autoplay failed:', error))
+        playPromise.catch((error) =>
+          console.error("Video autoplay failed:", error),
+        );
       }
     }
-  }, [])
+  }, [heroData?.videoUrl]);
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.muted = isMuted
+      videoRef.current.muted = isMuted;
     }
-  }, [isMuted])
+  }, [isMuted]);
+
+  const handleButtonClick = () => {
+    if (!heroData) return;
+    if (heroData.buttonLink.startsWith("#")) {
+      document
+        .getElementById(heroData.buttonLink.slice(1))
+        ?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.open(heroData.buttonLink, "_blank");
+    }
+  };
+
+  if (!heroData) return <div className="h-screen w-full bg-black" />;
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
@@ -35,23 +71,27 @@ export function Hero() {
         loop
         playsInline
       >
-        <source src="https://mojli.s3.us-east-2.amazonaws.com/Mojli+Website+upscaled+(12mb).webm" type="video/webm" />
+        <source src={heroData.videoUrl} type="video/webm" />
         Your browser does not support the video tag.
       </video>
 
-      {/* Mute Control - Positioned below the fixed header */}
       <div className="absolute top-24 right-6 sm:right-12 z-40">
         <div className="relative group">
           <button
             onClick={() => setIsMuted(!isMuted)}
             className="glass-effect p-3 rounded-full text-white hover:bg-white/20 gentle-animation cursor-pointer"
           >
-            {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+            {isMuted ? (
+              <VolumeX className="w-5 h-5" />
+            ) : (
+              <Volume2 className="w-5 h-5" />
+            )}
           </button>
-          
           {isMuted && (
             <div className="absolute top-1 right-14 flex items-center text-white/80 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-              <span className="font-medium text-sm mr-2 text-shadow-medium">Unmute</span>
+              <span className="font-medium text-sm mr-2 text-shadow-medium">
+                Unmute
+              </span>
             </div>
           )}
         </div>
@@ -65,21 +105,20 @@ export function Hero() {
       >
         <div className="max-w-2xl">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight text-white">
-            <span className="block">AI FILM</span>
-            <span className="block">PRODUCTION</span>
-            <span className="block">WITHOUT LIMITS</span>
+            <span className="block">{heroData.titleLine1}</span>
+            <span className="block">{heroData.titleLine2}</span>
+            <span className="block">{heroData.titleLine3}</span>
           </h1>
-          
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={handleButtonClick}
             className="mt-8 bg-red-600 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-full hover:bg-red-700 gentle-animation cursor-pointer shadow-lg"
           >
-            Start Creating
+            {heroData.buttonText}
           </motion.button>
         </div>
       </motion.div>
     </div>
-  )
+  );
 }

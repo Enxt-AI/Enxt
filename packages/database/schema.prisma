@@ -104,3 +104,78 @@ model SocialLink {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model AiFilmHero {
+  id         String   @id @default(cuid())
+  videoUrl   String
+  titleLine1 String   @default("AI FILM")
+  titleLine2 String   @default("PRODUCTION")
+  titleLine3 String   @default("WITHOUT LIMITS")
+  buttonText String   @default("Start Creating")
+  buttonLink String   @default("#contact")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model AiFilmPortfolio {
+  id           String   @id @default(cuid())
+  sectionTitle String   @default("Creative Productions")
+  description  String   @default("")
+  videoUrl     String
+  videoTitle   String   @default("Featured Video")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model AiFilmProcess {
+  id          String   @id @default(cuid())
+  number      String
+  title       String
+  description String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AiFilmService {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  imageUrl    String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AiFilmAward {
+  id        String   @id @default(cuid())
+  title     String
+  category  String
+  year      String
+  icon      String   @default("Trophy")
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AiFilmTeamMember {
+  id          String   @id @default(cuid())
+  name        String
+  crime       String
+  bounty      String
+  description String
+  imageUrl    String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AiFilmContact {
+  id         String   @id @default(cuid())
+  title      String   @default("Ready to Light Up the Screen?")
+  subtitle   String   @default("Book a discovery call to discuss your project.")
+  buttonText String   @default("Book Discovery Call")
+  buttonLink String   @default("https://cal.com")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
